@@ -1,0 +1,41 @@
+{
+  "name": "omegacms/testing",
+  "type": "package",
+  "description": "Omega CMS Testing Package",
+  "keywords": [ "omegacms", "framework", "testing" ],
+  "homepage": "https://omegacms.github.io",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Adriano Giovannini",
+      "email": "agisoftt@gmail.com",
+      "homepage": "https://omegacms.github.io",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "omegacms/application": "^1.0.0",
+    "omegacms/http": "^1.0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5",
+    "symfony/panther": "^0.9.0",
+    "dbrekelmans/bdi": "^0.3.0",
+    "symfony/process": "^5.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Omega\\Testing\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Omega\\Testing\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  },
+  "minimum-stability": "stable"
+}
