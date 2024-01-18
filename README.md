@@ -4,12 +4,28 @@
 
 * PHP 8.2 or later
 
-## Installation
+## Installation via Composer
 
-To install the package, you can simply run the following from the command line:
+Add `"omegacms/testing": "^1.0.0"` to the require block in your `composer.json` file and then run `composer install`.
+
+```json
+{
+    "require": {
+        "omegacms/testing": "^1.0.0"
+    }
+}
+```
+
+Alternatively, you can simply run the folowing from the command line:
 
 ```sh
-composer require omegacms/testing
+composer require omegacms/testing "^1.0.0"
+```
+
+If you want to include the test sources, use:
+
+```sh
+composer require --prefer-source omegacms/testing "^1.0.0"
 ```
 
 ## Documentation
