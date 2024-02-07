@@ -81,7 +81,7 @@ final class ServerExtension implements BeforeFirstTestHook, AfterLastTestHook
 
         $this->process = new Process( [
             PHP_BINARY,
-            "{$base}{$separator}console",
+            "{$base}{$separator}omega",
             "serve"
         ], $base );
 
