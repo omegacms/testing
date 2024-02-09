@@ -21,8 +21,8 @@ namespace Omega\Testing;
 /**
  * @use
  */
-use Omega\Helpers\Alias;
-use Omega\Helpers\App;
+use function Omega\Helpers\app;
+use function Omega\Helpers\env;
 use PHPUnit\Runner\BeforeFirstTestHook;
 use PHPUnit\Runner\AfterLastTestHook;
 use Symfony\Component\Process\Process;
@@ -76,7 +76,7 @@ final class ServerExtension implements BeforeFirstTestHook, AfterLastTestHook
 
         $this->startedServer = true;
 
-        $base = App::application( 'paths.base' );
+        $base = app( 'paths.base' );
         $separator = DIRECTORY_SEPARATOR;
 
         $this->process = new Process( [
@@ -101,8 +101,8 @@ final class ServerExtension implements BeforeFirstTestHook, AfterLastTestHook
     private function serverIsRunning() : bool
     {
         $connection = @fsockopen(
-            Alias::env( 'APP_HOST', '127.0.0.1' ),
-            Alias::env( 'APP_PORT', '8000' ),
+            env( 'APP_HOST', '127.0.0.1' ),
+            env( 'APP_PORT', '8000' ),
         );
 
         if ( is_resource( $connection ) ) {
