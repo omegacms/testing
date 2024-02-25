@@ -92,7 +92,7 @@ class TestResponse
         while ( $this->isRedirecting() ) {
             $_SERVER[ 'REQUEST_METHOD' ] = 'GET';
             $_SERVER[ 'REQUEST_URI' ] = $this->redirectingTo();
-            $this->response = Application::getInstance()->run();
+            $this->response = Application::getInstance()->bootstrap();
         }
 
         return $this;
