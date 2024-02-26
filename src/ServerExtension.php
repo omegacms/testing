@@ -11,7 +11,7 @@
 /**
  * @declare
  */
-//declare(strict_types=1);
+declare( strict_types = 1 );
 
 /**
  * @namespace
@@ -100,10 +100,11 @@ final class ServerExtension implements BeforeFirstTestHook, AfterLastTestHook
      */
     private function serverIsRunning() : bool
     {
-        $connection = @fsockopen(
-            env( 'APP_HOST', '127.0.0.1' ),
-            env( 'APP_PORT', '8000' ),
-        );
+        $port = filter_var( env( 'APP_PORT' ), FILTER_VALIDATE_INT );
+
+        if ( $port !== false ) {
+            $connection = @fsockopen( env( 'APP_HOST' ), $port );
+        }
 
         if ( is_resource( $connection ) ) {
             fclose( $connection );
