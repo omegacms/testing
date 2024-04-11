@@ -67,7 +67,7 @@ final class ServerExtension implements BeforeFirstTestHook, AfterLastTestHook
      *
      * @return void
      */
-    private function startServer()
+    private function startServer() : void
     {
         if ( $this->serverIsRunning() ) {
             $this->startedServer = false;
@@ -77,11 +77,10 @@ final class ServerExtension implements BeforeFirstTestHook, AfterLastTestHook
         $this->startedServer = true;
 
         $base = app( 'paths.base' );
-        $separator = DIRECTORY_SEPARATOR;
 
         $this->process = new Process( [
             PHP_BINARY,
-            "{$base}{$separator}omega",
+            $base . "/omega",
             "serve"
         ], $base );
 
@@ -100,7 +99,8 @@ final class ServerExtension implements BeforeFirstTestHook, AfterLastTestHook
      */
     private function serverIsRunning() : bool
     {
-        $port = filter_var( env( 'APP_PORT' ), FILTER_VALIDATE_INT );
+        $port       = filter_var( env( 'APP_PORT' ), FILTER_VALIDATE_INT );
+        $connection = '';
 
         if ( $port !== false ) {
             $connection = @fsockopen( env( 'APP_HOST' ), $port );

@@ -64,7 +64,7 @@ class TestCase extends BaseTestCase
             $actualType = $e::class;
 
             if ( $actualType !== $exceptionType ) {
-                $this->fail( "exception was {$actualType}, but expected {$exceptionType}" );
+                $this->fail( "exception was $actualType, but expected $exceptionType" );
             }
 
             $exception = $e;
